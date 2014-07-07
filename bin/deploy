@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+set -x
+
+tmp=${OPENSHIFT_EGOV_DIR}/tmp
+if [ -d $tmp ]; then
+  for d in $tmp/*; do
+      if [ -d $d ]; then
+          echo "Emptying tmp dir: $d"
+          rm -rf $d/* $d/.[^.]*
+      fi
+  done
+fi
+
+# if repo/webapps has any files in it, sync them to $OPENSHIFT_EGOV_DIR/webapps
+# and delete any files in $OPENSHIFT_EGOV_DIR/webapps that don't exist in
+# repo/webapps
+if [ "$(ls ${OPENSHIFT_REPO_DIR}/webapps 2>/dev/null)" ]; then
+  rsync -r --delete ${OPENSHIFT_REPO_DIR}/webapps/ ${OPENSHIFT_EGOV_DIR}/webapps/
+fi

@@ -1,0 +1,119 @@
+---
+Name: egov
+Cartridge-Short-Name: EGOV
+Cartridge-Vendor: jyes
+Cartridge-Version: 0.0.1
+Compatible-Versions: []
+Display-Name: Egov Tomcat 7
+Description: E-gov FrameWork And Tomcat Enterprise Web Server is the enterprise-class Java web container
+  for large-scale lightweight web applications based on Tomcat 7. Build and deploy
+  JSPs and Servlets in the cloud.
+Version: '7.0'
+Versions:
+- '7.0'
+- '6.0'
+License: LGPL
+License-Url: http://www.gnu.org/copyleft/lesser.txt
+Vendor: tomcat
+Categories:
+- service
+- java
+- tomcat
+- tomcat
+- tomcat7
+- web_framework
+Website: http://tomcat.apache.org/
+Help-Topics:
+  Developer Center: https://www.openshift.com/developers
+Cart-Data:
+- Key: OPENSHIFT_EGOV_LOG_DIR
+  Type: environment
+  Description: Directory to store application log files.
+- Key: OPENSHIFT_TMP_DIR
+  Type: environment
+  Description: Directory to store application temporary files.
+- Key: OPENSHIFT_REPO_DIR
+  Type: environment
+  Description: Application root directory where application files reside. This directory
+    is reset every time you do a git-push
+- Key: OPENSHIFT_EGOV_HTTP_PORT
+  Type: environment
+  Description: Internal port to which the web-framework binds to.
+- Key: OPENSHIFT_EGOV_IP
+  Type: environment
+  Description: Internal IP to which the web-framework binds to.
+- Key: OPENSHIFT_APP_DNS
+  Type: environment
+  Description: Fully qualified domain name for the application.
+- Key: OPENSHIFT_APP_NAME
+  Type: environment
+  Description: Application name
+- Key: OPENSHIFT_DATA_DIR
+  Type: environment
+  Description: Directory to store application data files. Preserved across git-pushes.
+    Not shared across gears.
+- Key: OPENSHIFT_APP_UUID
+  Type: environment
+  Description: Unique ID which identified the application. Does not change between
+    gears.
+- Key: OPENSHIFT_GEAR_UUID
+  Type: environment
+  Description: Unique ID which identified the gear. This value changes between gears.
+Provides:
+- tomcat-7.0
+- tomcat
+- tomcat-7.0
+- tomcat-7.0.0
+Publishes:
+  get-internal-uri:
+    Type: NET_TCP:http
+Subscribes:
+  set-env:
+    Type: ENV:*
+    Required: false
+  set-jdbc-info:
+    Type: NET_TCP:jdbc
+Endpoints:
+- Private-IP-Name: IP
+  Private-Port-Name: HTTP_PORT
+  Private-Port: 8080
+  Public-Port-Name: HTTP_PROXY_PORT
+  Protocols:
+  - http
+  - ws
+  Options:
+    primary: true
+  Mappings:
+  - Frontend: ''
+    Backend: ''
+    Options:
+      websocket: 1
+  - Frontend: /health
+    Backend: ''
+    Options:
+      health: true
+- Private-IP-Name: IP
+  Private-Port-Name: JPDA_PORT
+  Private-Port: 8787
+Additional-Control-Actions:
+- threaddump
+Version-Overrides:
+  '6.0':
+    Display-Name: Egov Tomcat 6
+    Description: E-gov FrameWork Tomcat Enterprise Web Server is the enterprise-class Java web container
+      for large-scale lightweight web applications based on Tomcat 6. Build and deploy
+      JSPs and Servlets in the cloud.
+    Provides:
+    - tomcat-6.0
+    - tomcat
+    - tomcat(version) = 6.0.0
+    - tomcat(version) >= 6.0
+    - tomcat-6.0
+    - tomcat-6.0.0
+    Categories:
+    - service
+    - java
+    - tomcat
+    - tomcat
+    - tomcat6
+    - web_framework

@@ -1,0 +1,6 @@
+#!/bin/bash -eu
+
+if [ -e $OPENSHIFT_EGOV_DIR/webapps/ROOT.war ]; then
+  cp $OPENSHIFT_EGOV_DIR/webapps/ROOT.war $OPENSHIFT_REPO_DIR/webapps
+fi
+
