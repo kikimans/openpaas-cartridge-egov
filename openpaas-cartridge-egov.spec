@@ -1,7 +1,7 @@
 %global cartridgedir %{_libexecdir}/openshift/cartridges/egov
 
 Summary:       Provides e-gov3.0 & Tomcat7.0 support
-Name:          openshift-origin-cartridge-egov
+Name:          openpaas-cartridge-egov
 Version: 0.0.1.1
 Release:       1%{?dist}
 Group:         Development/Languages
