@@ -73,5 +73,3 @@ alternatives --set tomcat-2.0 /usr/share/tomcat7
 %doc %{cartridgedir}/LICENSE
 
 %changelog
-* Mon July 7 2014 Filirom1 <kikimans@gmail.com> 0.0.1.1
-- egov framework create(kikimans@gmail.com)
