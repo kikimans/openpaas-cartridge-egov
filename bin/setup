@@ -39,13 +39,13 @@ mkdir -p ${OPENSHIFT_EGOV_DIR}/{run,tmp,conf,logs}
 cp ${OPENSHIFT_EGOV_DIR}/versions/{shared,${version}}/configuration/* ${OPENSHIFT_EGOV_DIR}/template/.openshift/config
 
 # Link the system Tomcat binaries to the cart Tomcat instance directory
-ln -sf ${SYSTEM_EGOV_DIR}/bin/bootstrap.jar ${OPENSHIFT_EGOV_DIR}/bin/bootstrap.jar
-ln -sf ${SYSTEM_EGOV_DIR}/bin/commons-daemon.jar ${OPENSHIFT_EGOV_DIR}/bin/commons-daemon.jar
-ln -sf ${SYSTEM_EGOV_DIR}/bin/tomcat-juli.jar ${OPENSHIFT_EGOV_DIR}/bin/tomcat-juli.jar
+ln -sf ${SYSTEM_TOMCAT_DIR}/bin/bootstrap.jar ${OPENSHIFT_EGOV_DIR}/bin/bootstrap.jar
+ln -sf ${SYSTEM_TOMCAT_DIR}/bin/commons-daemon.jar ${OPENSHIFT_EGOV_DIR}/bin/commons-daemon.jar
+ln -sf ${SYSTEM_TOMCAT_DIR}/bin/tomcat-juli.jar ${OPENSHIFT_EGOV_DIR}/bin/tomcat-juli.jar
 
 # Need to remove link: -f gets confused as this is a link to a link
 [ -h ${OPENSHIFT_EGOV_DIR}/lib ] && rm ${OPENSHIFT_EGOV_DIR}/lib
-ln -sf ${SYSTEM_EGOV_DIR}/lib ${OPENSHIFT_EGOV_DIR}/lib
+ln -sf ${SYSTEM_TOMCAT_DIR}/lib ${OPENSHIFT_EGOV_DIR}/lib
 
 # Link the user-controlled configurations to the Tomcat conf directory
 ln -sf ${OPENSHIFT_REPO_DIR}/.openshift/config/web.xml ${OPENSHIFT_EGOV_DIR}/conf
