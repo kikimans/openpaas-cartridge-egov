@@ -2,7 +2,7 @@
 
 Summary:       Provides e-gov3.0 & Tomcat7.0 support
 Name:          openpaas-cartridge-egov
-Version: 0.0.1.2
+Version: 0.0.1.3
 Release:       1%{?dist}
 Group:         Development/Languages
 License:       ASL 2.0
@@ -73,6 +73,11 @@ alternatives --set tomcat-2.0 /usr/share/tomcat7
 %doc %{cartridgedir}/LICENSE
 
 %changelog
+* Tue Jul 08 2014 kikimans <kikimans@jyes.co.kr> 0.0.1.3-1
+- Merge branch 'master' of https://github.com/kikimans/openpaas-cartridge-egov
+  (kikimans@jyes.co.kr)
+- control echo add (kikimans@jyes.co.kr)
+
 * Mon Jul 07 2014 kikimans <kikimans@jyes.co.kr> 0.0.1.2-1
 - new package built with tito
 
