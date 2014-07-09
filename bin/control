@@ -14,6 +14,10 @@ source ${OPENSHIFT_EGOV_DIR}/bin/util
 
 TOMCAT_PID_FILE="${OPENSHIFT_EGOV_DIR}/run/tomcat.pid"
 
+echo "cartridge directory : ${OPENSHIFT_EGOV_DIR}"
+
+echo "Tomcat Pid : $TOMCAT_PID_FILE"
+
 # Kill the process given by $1 and its children
 killtree() {
     local _pid=$1
