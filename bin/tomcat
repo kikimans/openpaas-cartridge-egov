@@ -69,6 +69,8 @@ for conf_file in "${replacement_conf_files[@]}"; do
   sed ${sed_replace_env} ${OPENSHIFT_REPO_DIR}/.openshift/config/${conf_file} > ${OPENSHIFT_EGOV_DIR}/conf/${conf_file}
 done
 
+echo "tomcat start classpath : $CLASSPATH"
+
 # Control the Tomcat instance
 if [ "$1" = "start" ]; then
   ${JAVACMD} $JAVA_OPTS $LOGGING_CONFIG $CATALINA_OPTS \
